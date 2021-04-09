@@ -1,0 +1,205 @@
+*{
+    margin: 0;
+    padding: 0;
+    transition: all .5s;
+    font-family: Boy Friend;
+}
+
+body{
+    font-size: 15px;
+}
+
+.top{
+    /* height: 100vh; */
+    /* width: 100wh; */
+    /* overflow: hidden; */
+    position: sticky;
+    top: 0px;
+    z-index: 999;
+}
+
+.top div{
+    position:absolute;
+    top: 0;
+    left: 0;
+}
+
+.head{
+    height: 200vh;
+}
+
+.menus{
+    width: 100%;
+    height: 80px;
+    background: #fff;
+    /* border: 1px solid red; */
+    opacity: 0;
+    /* transition: all .5s; */
+}
+
+.menus:hover,.menus_hover{
+    opacity: 1;
+}
+
+.top_names{
+    margin-left: 20px;
+    z-index: 999;
+}
+
+.top_name{
+    font-family: PingFang HK;
+    line-height: 80px;
+    font-size: 30px;
+    font-weight: 400;
+    color: #464646;
+}
+
+.menus:hover ~ .top_names .name_ch{
+    background-color: orange;
+    color: white;
+    opacity: 1;
+}
+
+.menus:hover ~ .top_names .name_en{
+    color: orange;
+}
+
+.name_ch{
+    border-radius: 20%;
+    background: #dfe6e9;
+    opacity: .8;
+}
+
+.items{
+    width: 90%;
+}
+
+.items ul{
+    /* border: 1px solid red; */
+    list-style: none;
+    width: 100%;
+    height: 80px;
+    /* background: #666; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.items{
+    overflow:hidden;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: .3s all;
+    /* border: 1px solid red; */
+}
+
+.menus:hover .items,.items_hover{
+    opacity: 1;
+    transform: translateX(0px);
+    /* margin-left: 0px; */
+}
+
+.items ul li{
+    font-family: PingFang HK;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0px 20px;
+    /* border: 1px solid red; */
+    width: 100px;
+    text-align: center;
+    line-height: 70px;
+    cursor: pointer;
+    /* border-bottom: 2px solid transparent; */
+    position: relative;/*使子元素相对父元素进行绝对定位*/
+}
+.items ul li i{
+    margin-right: 5px;
+}
+
+
+.items ul li::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;/*靠最左边开始*/
+    border-bottom: 5px solid orange;/*设置底部边颜色*/
+    width: 0;/*宽度为0，这里的宽度是相对与li的宽度*/
+    height: 100%;/*设置高度使它和li等高*/
+}
+
+.items ul li:hover::before{/*鼠标hover，状态发生改变*/
+    width: 100%;
+    transition: .3s all linear;/*设置过度时间*/
+    transition-delay: 0.1s;/*过度延时*/
+}
+
+.items ul li:hover a{
+    color: orange;
+}
+
+.items ul li a{
+    text-decoration: none;
+    color: #464646;
+}
+
+.items ul li:hover i{
+    animation: swing .3s linear infinite;
+    animation-delay: .5s;
+    /* color: red; */
+}
+
+.goTop{
+    position:fixed;
+    top: -1000px;
+    right: 40px;
+    transition: .5s all;
+    animation: float 2s linear infinite;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.showGoTop{
+    top: -100px;
+}
+
+.content{
+    height: 150vh;
+}
+
+/* 导航栏图标摆动动画 */
+@keyframes swing{
+    0%{
+        transform:rotateZ(0deg);
+    }
+    25%{
+        transform:rotateZ(10deg);
+    }
+    50%{
+        transform:rotateZ(0deg);
+    }
+    75%{
+        transform:rotateZ(-10deg);
+
+    }
+}
+
+/* 返回Top浮动动画 */
+@keyframes float{
+    0% {
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+    
+    50% {
+        -webkit-transform: translateY(-6px);
+        -ms-transform: translateY(-6px);
+        transform: translateY(-15px);
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
